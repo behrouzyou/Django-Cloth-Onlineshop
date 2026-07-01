@@ -6,10 +6,10 @@ from products.model.product import Product
 
 
 class Blog(models.Model):
-    title=models.ForeignKey(User,on_delete=models.DO_NOTHING,null=True,blank=True)
-    guest_id=models.CharField(max_length=255,null=True,blank=True)
+    title=models.CharField(max_length=255)
     content=RichTextField()
     image=models.ImageField(upload_to='static/blog')
+    is_published=models.BooleanField(default=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
     visit_count=models.PositiveIntegerField(default=0)

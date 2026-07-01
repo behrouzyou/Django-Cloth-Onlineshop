@@ -19,13 +19,12 @@ class Migration(migrations.Migration):
             name='Blog',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('guest_id', models.CharField(blank=True, max_length=255, null=True)),
                 ('content', ckeditor.fields.RichTextField()),
                 ('image', models.ImageField(upload_to='static/blog')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now_add=True)),
                 ('visit_count', models.PositiveIntegerField(default=0)),
-                ('title', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL)),
+                ('title', models.CharField(max_length=255)),
             ],
         ),
     ]

@@ -1,3 +1,2 @@
 from django.contrib import admin
-
-# Register your model here.
+from blog.model.admin.blog_admin import BlogAdmin

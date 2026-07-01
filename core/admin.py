@@ -1,3 +1,2 @@
-from django.contrib import admin
-
-# Register your model here.
+from core.model.admin.navigation_admin import NavigationAdmin
+from core.model.admin.slider import SliderAdmin
