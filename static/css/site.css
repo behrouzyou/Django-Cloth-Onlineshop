@@ -1,0 +1,16 @@
+@font-face {
+  font-family: IranSans;
+  src: url(font/iran-sans-400.ttf);
+}
+
+*{
+    font-family:IranSans;
+}
+
+body{
+    text-align:right;
+}
+
+.mr-10 {
+    margin-right:10px;
+}

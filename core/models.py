@@ -1,2 +1,3 @@
-from core.model.sidebar import Slider
 from core.model.navigation import Navigation
+from core.model.slider import Slider
+

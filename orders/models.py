@@ -1,1 +1,1 @@
-from orders.model.orders import Basket
+from orders.model.basket import Basket
