@@ -4,6 +4,7 @@ from django.db import models
 
 class Blog(models.Model):
     title = models.CharField(max_length=255, verbose_name='عنوان')
+    subtitle = models.CharField(max_length=255, verbose_name='زیر عنوان',default='')
     content = RichTextField(verbose_name='محتوا')
     image = models.ImageField(upload_to='static/blog/', verbose_name='تصویر')
     is_published = models.BooleanField(default=True, verbose_name='منتشرشده')

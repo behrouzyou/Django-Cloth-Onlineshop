@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+{% load static %}
+<head>
+    <title>Online Shop | Blog</title>
+    {% include 'partial/header.html' %}
+</head>
+<body>
+
+{% include 'partial/nav.html' %}
+
+<div class="container mt-5">
+    <div class="row">
+        {% for blog in blogs %}
+        <div class="col-xs-12 col-md-4">
+            <div class="card m-2">
+                <img src="{{blog.image.url}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{blog.title}}</h5>
+                    <p class="card-text">{{blog.subtitle}}</p>
+                </div>
+                <div class="card-footer text-body-secondary d-flex justify-content-between">
+                    <span>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        {{blog.updated_at|date:"Y-m-d"}}
+                    </span>
+                    <a href="/blog/{{blog.id}}/" class="btn btn-primary">مشاهده مقاله</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <nav class="d-flex justify-content-center">
+                <ul class="pagination">
+
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{page_obj.previous_page_number}}">قبلی</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link disabled"
+                           href="#">قبلی</a>
+                    </li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                    <li class="page-item">
+                        <a class="page-link {% if page_obj.number == num %}active{% endif %}" href="?page={{num}}">{{num}}</a>
+                    </li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{page_obj.next_page_number}}">بعدی</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link disabled" href="#">بعدی</a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+{% include 'partial/footer.html' %}
+
+</body>
+</html>

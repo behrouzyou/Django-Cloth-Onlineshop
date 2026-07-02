@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+{% load static %}
+<head>
+    <title>Online Shop | {{blog.title}}</title>
+    {% include 'partial/header.html' %}
+</head>
+<body>
+
+{% include 'partial/nav.html' %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <img src="{{blog.image.url}}" class="img-fluid rounded mb-3">
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="p-3 pb-1 text-center">{{blog.title}}</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{blog.subtitle}}
+                    </p>
+                    <hr/>
+                    <p class="card-text">
+                        {{blog.content|safe}}
+                    </p>
+                </div>
+                <div class="card-footer text-body-secondary d-flex justify-content-between">
+                    <span>
+                        <span>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            {{ blog.updated_at|date:"Y-m-d" }}
+                        </span>
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            {{ blog.updated_at|date:"H:i:s" }}
+                        </span>
+                    </span>
+                    <span>
+                        <i class="fa-solid fa-eye"></i>
+                        {{blog.visit_count}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'partial/footer.html' %}
+
+</body>
+</html>
