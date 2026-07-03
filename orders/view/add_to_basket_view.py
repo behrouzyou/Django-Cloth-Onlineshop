@@ -1,8 +1,10 @@
 from django.http import HttpRequest, JsonResponse
+from django.shortcuts import redirect
 from django.views import View
 from rest_framework.generics import get_object_or_404
 
 from orders.model.basket import Basket
+from orders.util.basket_util import get_guest_id
 from products.model.product import Product
 
 
@@ -19,8 +21,5 @@ class AddToBasketView(View):
         if request.user.is_authenticated:
             return Basket.objects.get_or_create(user=request.user, product=product)[0]
 
-        guest_id = request.session.session_key
-        if guest_id in None:
-            request.session.create()
-            guest_id = request.session.session_key
+        guest_id = get_guest_id(request)
         return Basket.objects.get_or_create(guest_id=guest_id, product=product)[0]

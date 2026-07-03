@@ -6,6 +6,7 @@ from django.views.decorators.cache import never_cache
 
 from core.model.navigation import Navigation
 from orders.model.basket import Basket
+from orders.util.basket_util import get_guest_id
 
 
 class BasketView(View):
@@ -14,10 +15,7 @@ class BasketView(View):
         if request.user.is_authenticated:
             basket_items = Basket.objects.filter(user=request.user)
         else:
-            guest_id = request.session.session_key
-            if guest_id in None:
-                request.session.create()
-                guest_id=request.session.session_key
+            guest_id = get_guest_id(request)
             basket_items = Basket.objects.filter(guest_id=guest_id)
 
         total_price = 0
