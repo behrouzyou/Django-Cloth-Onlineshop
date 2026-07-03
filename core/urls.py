@@ -9,5 +9,5 @@ router.register('sliders', SliderViewSet)
 router.register('navigations', NavigationViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/core/', include(router.urls)),
 ]

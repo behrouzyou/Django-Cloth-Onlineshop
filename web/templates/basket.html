@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+{% load static %}
+<head>
+    <title>Online Shop | Basket</title>
+    {% include 'partial/header.html' %}
+</head>
+<body>
+
+{% include 'partial/nav.html' %}
+
+<h1 class="text-center p-5">سبد خرید</h1>
+
+<div class="container">
+    <div class="row">
+        {% for item in basket_items %}
+            <h3>{{item.product.name}}</h3>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'partial/footer.html' %}
+
+</body>
+</html>

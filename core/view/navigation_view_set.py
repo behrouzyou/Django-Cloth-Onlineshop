@@ -5,5 +5,5 @@ from core.model.serializer.navigation_serializer import NavigationSerializer
 
 
 class NavigationViewSet(ReadOnlyModelViewSet):
-    queryset = Navigation.objects.all()
+    queryset = Navigation.objects.filter(is_active=True)
     serializer_class = NavigationSerializer

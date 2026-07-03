@@ -5,5 +5,5 @@ from core.model.slider import Slider
 
 
 class SliderViewSet(ReadOnlyModelViewSet):
-    queryset = Slider.objects.all()
+    queryset = Slider.objects.filter(is_active=True)
     serializer_class = SliderSerializer

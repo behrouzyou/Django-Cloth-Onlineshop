@@ -8,7 +8,7 @@ class Basket(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
     guest_id = models.CharField(max_length=255, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
-    quantity = models.PositiveSmallIntegerField()
+    quantity = models.PositiveSmallIntegerField(default=0)
     added_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

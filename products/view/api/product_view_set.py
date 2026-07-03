@@ -5,5 +5,5 @@ from products.model.serializer.product_serializer import ProductSerializer
 
 
 class ProductViewSet(ReadOnlyModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_active=True)
     serializer_class = ProductSerializer

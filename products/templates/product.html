@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 {% load static %}
+{% load custom_filters %}
 <head>
     <title>Online Shop | {{product.name}}</title>
     {% include 'partial/header.html' %}
@@ -26,8 +27,12 @@
                     <p class="card-text">
                         {{product.description|safe}}
                     </p>
+                    <div class="card-text pt-3 pb-3">
+                        <h5>قیمت: {{product.price|makemoney}} تومان</h5>
+                    </div>
                     <div class="text-end">
-                        <a href="#" class="btn btn-primary">
+                        <input type="hidden" id="csrf_token" value="{{csrf_token}}"/>
+                        <a href="#" class="btn btn-primary" onclick="addToBasket()">
                             <i class="fa-solid fa-basket-shopping"></i>
                             به سبد خریدم اضافه کن
                         </a>
@@ -49,6 +54,18 @@
 </div>
 
 {% include 'partial/footer.html' %}
+
+<script>
+    function addToBasket(){
+        let csrf = document.getElementById("csrf_token").value;
+        fetch('/basket/{{product.id}}/add/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': csrf
+            }
+        }).then(res => location.href='/basket/');
+    }
+</script>
 
 </body>
 </html>

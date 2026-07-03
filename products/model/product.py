@@ -4,7 +4,8 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='نام')
-    description = RichTextField(verbose_name='توضیحات')
+    description = RichTextField(verbose_name='توضیحات', default='')
+    content = RichTextField(verbose_name='محتوا', default='')
     price = models.PositiveBigIntegerField(verbose_name='قیمت')
     is_active = models.BooleanField(default=True, verbose_name='فعال')
     image = models.ImageField(upload_to='static/products/', verbose_name='تصویر')
