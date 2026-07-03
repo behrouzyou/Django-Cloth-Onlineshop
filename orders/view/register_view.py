@@ -45,7 +45,7 @@ class RegisterView(View):
         user.is_staff = True
         user.save()
 
-        customer_group = Group.objects.get(name='Customer')
+        customer_group = Group.objects.get(name='customer')
         user.groups.add(customer_group)
 
         Address.objects.create(
