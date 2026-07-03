@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+{% load static %}
+{% load custom_filters %}
+<head>
+    <title>Online Shop | IPG</title>
+    {% include 'partial/header.html' %}
+</head>
+<body>
+
+{% include 'partial/nav.html' %}
+<div class="p-5">
+    <h1 class="text-center p-5">درگاه پرداخت</h1>
+    <div class="text-center">
+        <img src="/static/images/bank-card.jpg" width="300"/>
+    </div>
+    <div class="container p-5">
+        <div>
+            <div class="container text-center m-1">
+                <p>
+                    مبلغ پرداختی :
+                    {{order.amount|makemoney}}
+                    تومان
+                </p>
+                <div>
+                    <a href="/verify/?status=OK" class="btn btn-success btn-lg">
+                        پرداخت موفق ✅
+                    </a>
+                    <a href="/verify/?status=NOK" class="btn btn-danger btn-lg">
+                        پرداخت ناموفق ❌
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'partial/footer.html' %}
+
+</body>
+</html>

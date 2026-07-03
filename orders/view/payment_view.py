@@ -47,4 +47,5 @@ class PaymentView(View):
 
         # todo: go to Internet Payment Gateway (درگاه پرداخت اینترنتی)
         ipg = 'http://127.0.0.1:8000/ipg/'
+        request.session['last_order_pk']=order.pk
         return redirect(ipg)

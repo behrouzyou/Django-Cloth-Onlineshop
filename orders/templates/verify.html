@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+{% load static %}
+{% load custom_filters %}
+<head>
+    <title>Online Shop | IPG</title>
+    {% include 'partial/header.html' %}
+</head>
+<body>
+
+{% include 'partial/nav.html' %}
+<div class="container p-5">
+    <div>
+        <div class="container text-center m-1">
+            <p>
+                مبلغ پرداختی :
+                {{order.amount|makemoney}}
+                تومان
+            </p>
+            <p>
+                وضعیت سفارش:
+                {{order.status}}
+            </p>
+            <p>
+                درگاه پرداخت:
+                {{transactions.payment_gateway}}
+            </p>
+             <p>
+                زمان پرداخت:
+                {{transactions.created_at}}
+            </p>
+        </div>
+    </div>
+</div>
+{% include 'partial/footer.html' %}
+
+</body>
+</html>
