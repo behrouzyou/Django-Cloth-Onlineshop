@@ -9,6 +9,7 @@ from orders.model.basket import Basket
 from orders.model.order import Order
 from orders.model.order_item import OrderItem
 from orders.model.transaction import Transaction
+from orders.util.ipg import zarinpal_pay
 
 
 class PaymentView(View):
@@ -42,10 +43,16 @@ class PaymentView(View):
         transaction = Transaction.objects.create(
             order=order,
             amount=total_price,
-            payment_gateway='LocalPayment'
+            payment_gateway='ZarinPal'
         )
+        # ipg = 'http://127.0.0.1:8000/ipg/'
 
-        # todo: go to Internet Payment Gateway (درگاه پرداخت اینترنتی)
-        ipg = 'http://127.0.0.1:8000/ipg/'
-        request.session['last_order_pk']=order.pk
+        ipg = zarinpal_pay.payment_gateway(transaction)
+
+        if ipg is None:
+            messages.error(request, 'خطا در ارسال به درگاه پرداخت', extra_tags='danger')
+            return redirect('/')
+
+        request.session['last_order_pk'] = order.pk
+
         return redirect(ipg)

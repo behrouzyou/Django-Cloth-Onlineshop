@@ -9,7 +9,8 @@
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">خانه</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">محصولات</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">بلاگ</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">درباره ما</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">درباره ما</a>
+                        </li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">سبد خرید</a></li>
                     </ul>
                 </div>
@@ -20,7 +21,8 @@
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">خانه</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">محصولات</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">بلاگ</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">درباره ما</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">درباره ما</a>
+                        </li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">سبد خرید</a></li>
                     </ul>
                 </div>
@@ -31,7 +33,8 @@
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">خانه</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">محصولات</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">بلاگ</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">درباره ما</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">درباره ما</a>
+                        </li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">سبد خرید</a></li>
                     </ul>
                 </div>
@@ -53,13 +56,13 @@
                 <p>© 2026 کلیه حقوق متعلق است به فروشگاه آنلاین</p>
                 <ul class="list-unstyled d-flex">
                     <li class="ms-3"><a class="link-body-emphasis" href="#">
-                       <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
                     </a></li>
                     <li class="ms-3"><a class="link-body-emphasis" href="#">
                         <i class="fa-brands fa-instagram"></i>
                     </a></li>
                     <li class="ms-3"><a class="link-body-emphasis" href="#">
-                       <i class="fa-brands fa-meta"></i>
+                        <i class="fa-brands fa-meta"></i>
                     </a></li>
                 </ul>
             </div>
@@ -67,4 +70,20 @@
     </div>
 </div>
 
+
+<div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+</div>
+
 <script src="{% static 'libs/bootstrap-5.3.3-dist/js/bootstrap.min.js' %}"></script>
+
+<script>
+    function showLoading() {
+        document.getElementById("loading").style.display = "flex";
+        document.body.classList.add("no-scroll"); // قفل کردن اسکرول صفحه
+    }
+    function hideLoading() {
+        document.getElementById("loading").style.display = "none";
+        document.body.classList.remove("no-scroll");
+    }
+</script>
